@@ -32,7 +32,6 @@ dependencies {
     implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:2.0.0' // API for JSTL
     implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:2.0.0' // Implementation of JSTL
 
-    // MySQL database connector
     runtimeOnly 'mysql:mysql-connector-java:8.0.33' // JDBC driver for MySQL
 
     // Spring Boot development tools
