@@ -15,12 +15,15 @@ java {
 
 repositories {
     mavenCentral()
+    maven { url 'https://repo1.maven.org/maven2/' } // Add Maven repository for JSTL
 }
 
 dependencies {
     runtimeOnly 'mysql:mysql-connector-java:8.0.33'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+    implementation 'javax.servlet:jstl:1.2' // Corrected JSTL dependency
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
