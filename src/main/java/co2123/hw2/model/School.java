@@ -1,30 +1,24 @@
+
 package co2123.hw2.model;
 
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
 public class School {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-generate the ID
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
 
-    @ManyToMany
-    @JoinTable(
-            name = "school_pupil", // The join table to map the relationship
-            joinColumns = @JoinColumn(name = "school_id"), // Foreign key for the School entity
-            inverseJoinColumns = @JoinColumn(name = "pupil_address") // Foreign key for the Pupil entity
-    )
+    @ManyToMany(mappedBy = "schools")
     private List<Pupil> pupils;
 
     @ManyToOne
-    @JoinColumn(name = "representative_address") // Foreign key to the Pupil entity (representative)
+    @JoinColumn(name = "representative_address")
     private Pupil representative;
 
-    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -57,7 +51,6 @@ public class School {
         this.representative = representative;
     }
 
-    // toString Method
     @Override
     public String toString() {
         return "School{id=" + id + ", name='" + name + "', pupils=" + pupils + ", representative=" + representative + "}";

@@ -1,7 +1,7 @@
+
 package co2123.hw2.model;
 
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
@@ -11,21 +11,19 @@ public class Pupil {
 
     @ManyToMany
     @JoinTable(
-            name = "school_pupil", // The join table that maps School and Pupil entities
-            joinColumns = @JoinColumn(name = "pupil_address"), // Foreign key for the Pupil entity
-            inverseJoinColumns = @JoinColumn(name = "school_id") // Foreign key for the School entity
+            name = "school_pupil",
+            joinColumns = @JoinColumn(name = "pupil_address"),
+            inverseJoinColumns = @JoinColumn(name = "school_id")
     )
     private List<School> schools;
 
-    @OneToMany
-    @JoinColumn(name = "pupil_address") // Foreign key for the Pupil entity in the Grade table
+    @OneToMany(mappedBy = "pupil", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Grade> grades;
 
     @OneToOne
-    @JoinColumn(name = "best_grade_identifier") // Foreign key for the "best" grade
+    @JoinColumn(name = "best_grade_identifier")
     private Grade best;
 
-    // Getters and Setters
     public String getAddress() {
         return address;
     }
@@ -58,9 +56,8 @@ public class Pupil {
         this.best = best;
     }
 
-    // toString Method
     @Override
     public String toString() {
-        return "address='" + address + "', grades=" + grades + ", best=" + best;
+        return "Pupil{address='" + address + "', grades=" + grades + ", best=" + best + "}";
     }
 }
