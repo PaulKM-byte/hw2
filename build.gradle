@@ -37,7 +37,7 @@ dependencies {
     // Spring Boot development tools
     developmentOnly 'org.springframework.boot:spring-boot-devtools' // Enables live reload and development enhancements
 
-    // Testing dependencies
+    // Testing dependency
     testImplementation 'org.springframework.boot:spring-boot-starter-test' // Testing utilities and libraries for Spring Boot
 }
 
